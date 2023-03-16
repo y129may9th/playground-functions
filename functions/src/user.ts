@@ -3,19 +3,22 @@ import users = require("./table/users");
 // ========================================================================
 // ユーザー情報 取得
 // ========================================================================
-export async function selectUser(data: any) {
+export async function selectUser(params: { id: number; }) {
+  console.log("===== params =====");
+  console.log(params);
+
   // 結果返却用
   const result = {
     message: "",
     record: null,
-    data: data,
+    data: params,
   };
 
   try {
     // =======================================
     // 取得
     // =======================================
-    const record = await users.select();
+    const record = await users.select(params);
 
     // =======================================
     // 処理終了

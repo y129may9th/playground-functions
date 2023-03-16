@@ -7,7 +7,7 @@ dotenv.config();
 // =======================================
 // 取得
 // =======================================
-export async function select() {
+export async function select(params: { id: number }) {
   // MySQLへ接続
   const connection = await mysql.createConnection({
     host: process.env.DB_HOST,
@@ -17,8 +17,12 @@ export async function select() {
     database: process.env.DB_DATABASE,
   });
 
+  const userId = params.id;
+
   try {
-    const results = await connection.query("SELECT * FROM users WHERE id = 10");
+    const results = await connection.query("SELECT * FROM users WHERE id = ?", [
+      userId,
+    ]);
     return results;
   } catch (e: unknown) {
     if (e instanceof Error) {
