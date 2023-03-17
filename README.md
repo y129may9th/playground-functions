@@ -34,3 +34,6 @@ firebase deploy --only functons:<関数名>
 ## ドキュメントなど
 - [Functions Framework &nbsp;|&nbsp; Google Cloud Functions に関するドキュメント](https://cloud.google.com/functions/docs/functions-framework?hl=ja)
 - [GitHub - GoogleCloudPlatform/functions-framework-nodejs: FaaS (Function as a service) framework for writing portable Node.js functions](https://github.com/GoogleCloudPlatform/functions-framework-nodejs)
+
+- 作業メモ
+https://github.com/y129may9th/TIL/blob/master/TIL/230315.md 
