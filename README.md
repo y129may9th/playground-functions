@@ -28,7 +28,7 @@ curl localhost:8080
 - デプロイ
 ```bash
 firebase deploy
-firebase deploy --only functons:<関数名>
+firebase deploy --only functions:<関数名>
 ```
 
 ## ドキュメントなど
