@@ -10,7 +10,6 @@ export async function createUser(params: any) {
   // 結果返却用
   const result = {
     message: "",
-    record: null,
     data: params,
   };
 
@@ -19,7 +18,6 @@ export async function createUser(params: any) {
 
     if (record) {
       result.message = "取得成功しました。";
-      result.record = record;
       return result;
     } else {
       result.message = "取得失敗しました。";

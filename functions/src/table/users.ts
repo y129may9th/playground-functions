@@ -19,6 +19,8 @@ export async function create(params: object) {
 
   const columns: string[] = [];
   const data: any[] = [];
+  const desiredIndustryCodeList: number[] = [1, 2, 3, 4];
+  const tmiestamp: string = '2023-03-28 05:38:14.652468';
 
   Object.entries(params).forEach(([key, value]) => {
     columns.push(key);
@@ -26,11 +28,20 @@ export async function create(params: object) {
   });
 
   try {
-    const results = await connection.query(
-        "INSERT INTO users (??) VALUES (?)",
-        [columns, data]
+    await connection.query(
+      "INSERT INTO users (??) VALUES (?)",
+      [columns, data]
     );
-    return results;
+
+    await connection.query(
+      "SET @user_id = LAST_INSERT_ID()");
+
+    await desiredIndustryCodeList.forEach(code => {
+      connection.query(
+        "INSERT INTO user_desired_industries (user_id, desired_industry_code, created_at, updated_at) VALUES (@user_id, ?, ?, ?)", [code, tmiestamp, tmiestamp]);
+    });
+
+      return true;
   } catch (e: unknown) {
     if (e instanceof Error) {
       // Error型であることを確認したらエラーメッセージを投げる。
